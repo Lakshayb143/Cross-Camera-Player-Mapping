@@ -3,41 +3,77 @@
 ## 📌 Title
 **Cross-Camera Player Tracking and Re-Identification in Football Matches**
 
-## 👤 Author
-Lakshay  
-AI Internship Assignment
+ 
 
 ---
 
 ## 🧭 Table of Contents
 1. [Introduction](#introduction)
-2. [Input Description](#input-description)
-3. [System Architecture](#system-architecture)
-4. [Modules and Components](#modules-and-components)
-5. [Design Decisions](#design-decisions)
-6. [Implementation Steps](#implementation-steps)
-7. [Challenges and Edge Cases](#challenges-and-edge-cases)
-8. [Evaluation and Metrics](#evaluation-and-metrics)
-9. [Conclusion and Future Work](#conclusion-and-future-work)
-10. [References](#references)
+2. [Project Structure](#project-structure)
+3. [Input Description](#input-description)
+4. [System Architecture](#system-architecture)
+5. [Modules and Components](#modules-and-components)
+6. [Design Decisions](#design-decisions)
+7. [Implementation Steps](#implementation-steps)
+8. [Challenges and Edge Cases](#challenges-and-edge-cases)
+9. [Evaluation and Metrics](#evaluation-and-metrics)
+  10. [Conclusion and Future Work](#conclusion-and-future-work)
+  11. [References](#references)
 
 ---
 
-## 🧠 Introduction
+## Introduction
 This project aims to build a system for tracking and re-identifying football players across two camera angles. It leverages a YOLOv11-based object detection model along with tracking and appearance-based matching strategies to maintain consistent identities across views.
 
 ---
 
+## Project Structure
+
+```text
+Cross-Camera-Player-Mapping/
+│
+├── artifacts/                    # Contains input videos and model weights
+│   ├── broadcast.mp4
+│   ├── tacticam.mp4
+│   └── best.pt                   # YOLOv11 pretrained model
+│
+├── core/                         # Core logic and low-level processing
+│   ├── components/               # strategy implementations
+│   │   ├── ExtractionStrategies.py
+│   │   ├── ModelStrategies.py
+│   │   ├── SynchronizationStrategies.py
+│   │   └── __init__.py
+│   │
+│   ├── interfaces/               # Interfaces for design patterns
+│   │   ├── IExtractor.py
+│   │   ├── ISynchronizer.py
+│   │   └── IModel.py
+│   │
+│   ├── steps/                    # Pipeline steps
+│   │   ├── FrameExtractor.py
+│   │   ├── Synchronizer.py
+│   │   ├── Detector.py
+│   │   └── Tracker.py
+│   │
+│   └── utils/                    # Utility functions (logging, helpers)
+│       ├── logger.py
+│
+├── Research.md                   # Knowledge Base Used in This Project
+├── README.md                     
+└── requirements.txt              # Required Python packages
+```
+
+---
+
 ## 🎥 Input Description
-- **Video 1 (Main Camera):** Overview of the full field.
-- **Video 2 (Side Camera):** Closer or different angle of the field.
-- Frame rate, dimensions, and sync assumptions will be discussed.
-- Screenshots to illustrate scene differences will be added.
+- **Video 1 :** Overview of the full field.
+- **Video 2 :** Closer or different angle of the field.
+<!-- - Frame rate, dimensions, and sync assumptions will be discussed. -->
+
 
 ---
 
 ## 🧱 System Architecture
-![Architecture Diagram](docs/architecture.png)
 
 - Preprocessing
 - YOLOv11 Detection
@@ -48,7 +84,7 @@ This project aims to build a system for tracking and re-identifying football pla
 
 ---
 
-## ⚙️ Modules and Components
+## Modules and Components
 
 | Module        | Purpose                                 |
 |---------------|------------------------------------------|
@@ -61,7 +97,8 @@ This project aims to build a system for tracking and re-identifying football pla
 
 ---
 
-## 🧠 Design Decisions
+## Design Decisions
+- Implmented various LLD (Low Level Design) techniques to make code simple, clean, modular and scalable.
 - Chose YOLOv11 for detection due to pretrained model availability.
 - DeepSORT selected for real-time, ID-preserving tracking.
 - Re-ID through combination of bounding box crops and color histograms.
@@ -72,54 +109,56 @@ This project aims to build a system for tracking and re-identifying football pla
 ## 🔨 Implementation Steps
 ### ✅ Step 1: Preprocessing
 - Frame sampling every X frames
-- Resizing to YOLOv11 input dimensions
+- Video synchronization
 
 ### ✅ Step 2: Detection
 - Run inference on each frame with YOLOv11 `.pt` model
-- Filter non-player classes
+- 
 
 ### ✅ Step 3: Tracking
-- Apply DeepSORT per video
-- Generate unique track IDs
+- 
+- 
 
 ### ✅ Step 4: Feature Extraction
-- Crop player images
-- Compute color histograms / simple embeddings
+- 
+- 
 
 ### ✅ Step 5: Cross-Camera Matching
-- Compare features using cosine similarity or color histogram distances
-- Generate ID mapping
+- 
+- 
 
 ### ✅ Step 6: Visualization
-- Assign consistent IDs
-- Output annotated video clips
+- 
+- 
 
 ---
 
-## ⚠️ Challenges and Edge Cases
-- Occlusions from other players
-- Camera view changes
-- False positives in detection
-- Mismatched bounding boxes due to motion blur
+## Challenges faced and Edge Cases
+- **Occlusions from other players** - Players often overlap or disappear briefly. We can use appearance embeddings
+help to reacquire identity.
+- **Incomplete Field Overlap** - If a player appears in one view but is out of sight in the other, we can leave it
+unmapped 
+- **Similar Uniforms** - Teammates look almost identical.
+- **Temporary ID Swaps** - If one player overtakes another, trackers sometimes swap IDs.  Mitigate this by
+using strong appearance constraints
 
 ---
 
-## 📈 Evaluation and Metrics
-- Total players detected and tracked
-- Number of correct cross-view re-IDs
-- Screenshots and before-after comparisons
+## Evaluation and Metrics
+- 
 
 ---
 
-## 📌 Conclusion and Future Work
-- What worked well?
-- What would be improved with more time?
-- Potential extensions (3-camera setup, fine-tuned ReID model)
+## Conclusion and Future Work
+- 
 
 ---
 
-## 🔗 References
-1. YOLOv11 Official Documentation
-2. DeepSORT Paper and GitHub Repo
-3. OpenCV Python Tutorials
-4. SoccerNet Dataset and Benchmarks
+## References
+
+#### [📚 Knowledge Base Used in This Project ](Research.md) 
+– Detailed list of research papers, tools, and documentation reviewed and applied during development.
+
+
+## 👤 Author
+Lakshay 

@@ -1,6 +1,71 @@
-### Other Possible Strategies for Synchronization
+# Research & Technical References
 
-The visual SSIM cross-correlation we built is a great general-purpose method. However, different scenarios call for different tools. Here are other powerful strategies you could implement, each with its own pros and cons. We can easily integrate any of these into our project thanks to the Strategy Design Pattern we've been using.
+
+
+## 🧭 Table of Contents
+1. [Documentations & Articles](#documentations)
+2. [Research Papers](#research-papers)
+3. [Tools](#tools)
+4. [Theory](#theory)
+
+---
+
+## Documentations & Articles
+
+- [Ultralytics Docs - Yolo](https://docs.ultralytics.com/)
+
+- [An enhanced Swin Transformer for soccer player reidentification](https://www.nature.com/articles/s41598-024-51767-4#:~:text=exist%20between%20sport%20player%20ReID,identify%20players.%20These%20problems%20are)
+
+- [Swin Transformer Based on Two-Fold Loss and Background Adaptation Re-Ranking for Person Re-Identification](https://www.mdpi.com/2079-9292/11/13/1941)
+
+
+- [Camera Calibration in Sports with Keypoints - Roboflow](https://blog.roboflow.com/camera-calibration-sports-computer-vision/)
+
+- [Homography examples using OpenCV](https://learnopencv.com/homography-examples-using-opencv-python-c/)
+
+- [Tracking multiple objects with OpenCV](https://pyimagesearch.com/2018/08/06/tracking-multiple-objects-with-opencv/)
+
+- [Object Tracking with YOLOv8 and Python](https://pyimagesearch.com/2024/06/17/object-tracking-with-yolov8-and-python/)
+
+- [Soccer Analytics Handbook](https://github.com/devinpleuler/analytics-handbook/blob/master/soccer_analytics_handbook.ipynb)
+---
+
+## Research Papers
+
+
+- [Structural Similarity Index (SSIM): Image Quality Assessment: From Error Visibility to Structural Similarity](https://www.cns.nyu.edu/pub/eero/wang03-reprint.pdf)
+
+- [YOLO11-JDE: Fast and Accurate Multi-Object Tracking with Self-Supervised Re-ID](https://arxiv.org/abs/2501.13710)
+
+- [Look, Listen and Learn](https://arxiv.org/abs/1705.08168#)
+    
+    
+
+---
+
+## Tools
+
+- **OpenCV**: Library used for computer vision.
+
+- **FFmpeg**: The command-line tool that powers most video processing. [website](https://ffmpeg.org/)
+
+    #### Github Repos
+    - [Repo 1](https://github.com/ML-KULeuven/)
+    - [Repo 2](https://github.com/Friends-of-Tracking-Data-FoTD)
+
+
+
+---
+## Theory
+
+
+
+
+### Synchronization
+
+#### Strategies for Synchronization
+
+Different strategies for Video Synchronization
 
 #### 1\. Audio Cross-Correlation
 
@@ -71,4 +136,6 @@ Sometimes, the best solution is to let a human do it.
 | **Feature-Based (OCR)** | Reads a game clock in both views and aligns based on the time. | Potentially the most accurate, uses ground truth time. | Complex to implement, requires reliable detection and OCR. | Professional broadcasts with a consistent on-screen clock. |
 | **Manual Interface** | A human user visually aligns the videos and sets the offset. | Perfect accuracy (human-validated), great fallback. | Not automated, does not scale. | Final validation, or when all automated methods fail. |
 
-For your next step, we can proceed with **Normalization and Calibration**, which will use the synchronized frame pairs we can now generate.
+
+
+
