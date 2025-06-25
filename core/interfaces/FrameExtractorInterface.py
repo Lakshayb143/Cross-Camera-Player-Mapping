@@ -4,12 +4,12 @@ import numpy as np
 from typing import Iterator
 
 """
-Factory design pattern to perform frame extraction
+abstract Class for implementing frame extraction strategies using design patterns.
 """
 
 class FrameExtractingStrategy(ABC):
     """
-    Abstract interface for a frame extraction strategy.
+    Interface for a frame extraction strategy.
 
     This defines the contract that all concrete extraction methods
     (like GPU or CPU-based) must follow.

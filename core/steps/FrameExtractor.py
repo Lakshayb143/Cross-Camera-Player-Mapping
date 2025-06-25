@@ -15,7 +15,7 @@ class FrameExtractor:
     """
 
     def __init__(self, video_path : Path, strategy : Type[FrameExtractingStrategy]):
-        logger.info(f"Initializing extractor for {video_path}  with primary strategy {strategy.__class__.__name__}")
+        logger.info(f"Initializing extractor for {video_path}  with primary strategy {strategy.__name__}")
         self.strategy = strategy(video_path=video_path)
     
 
@@ -34,10 +34,10 @@ class FrameExtractor:
 
         if exc_type:
             logger.error(f"Exception during frame extraction: {exc_val}")
-            looger.error(f"Traceback to the exception : {exc_tb}")
+            logger.error(f"Traceback to the exception : {exc_tb}")
 
     
-    def extract(self, frames_per_second : int = 5) -> Iterator[np.ndarray]:
+    def extract(self, frames_per_second : int = 15) -> Iterator[np.ndarray]:
         if not self.strategy.is_opened:
             logger.error("Video source is not open.")
             raise RuntimeError("Video source is not open.")

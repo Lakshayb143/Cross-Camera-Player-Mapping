@@ -4,15 +4,18 @@ import numpy as np
 from pathlib import Path
 import logging
 
+from core.interfaces.FrameExtractorInterface import FrameExtractingStrategy
+
 logger = logging.getLogger(__name__)
 
-
-from core.interfaces.FrameExtractorInterface import FrameExtractingStrategy
+"""
+We will implement Stratagies for frame extraction.
+"""
 
 
 class FfmpegcvCPUStrategy(FrameExtractingStrategy):
     """
-     Concrete frame extraction strategy using ffmpegcv with CPU decoding.
+    Concrete frame extraction strategy using ffmpegcv with CPU decoding.
     """
 
     def __init__(self, video_path : Path):
