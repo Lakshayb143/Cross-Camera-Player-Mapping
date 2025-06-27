@@ -15,9 +15,9 @@
 5. [Modules and Components](#modules-and-components)
 6. [Design Decisions](#design-decisions)
 7. [Implementation Steps](#implementation-steps)
-8. [Challenges and Edge Cases](#challenges-and-edge-cases)
+8. [Challenges](#challenges)
 9. [Evaluation and Metrics](#evaluation-and-metrics)
-  10. [Future Work](#conclusion-and-future-work)
+  10. [Future Work](#future-work)
   11. [References](#references)
 
 ---
@@ -103,9 +103,9 @@ Cross-Camera-Player-Mapping/
 
 ---
 
-## 🔨 Implementation Steps
+## Implementation Steps
 ### ✅ Step 1: Preprocessing
-- Frame sampling every X frames
+- Frame sampling every X frames using `ffmpegcv`
 - Video synchronization
 - Normalizaton and transformation using homography with `cv2.RANSAC`
 
@@ -124,7 +124,7 @@ Cross-Camera-Player-Mapping/
 
 ---
 
-## Challenges faced and Edge Cases
+## Challenges
 
 ### Homography Inaccuracy
 
@@ -139,8 +139,79 @@ Cross-Camera-Player-Mapping/
 ---
 
 ## Evaluation and Metrics
-- 
 
+
+### Engineering & Performance Metrics
+
+* **Latency / Processing Speed** -This measures the computational efficiency of the solution.
+
+    - Used `ffmpeg` rather than opencv for better and faster frame extraction.
+
+---
+
+### Evaluation Metrices
+
+1. Matching Accuracy
+Out of all the players that should have been mapped, what percentage did our model map correctly.
+
+It measures the ratio of correct predictions to the total number of players present in the ground truth.
+
+Formula:
+
+    Accuracy= ( Number of Correct Matches / Total Number of Players in Ground Truth )
+
+​
+ 
+2. Precision
+Out of all the mappings our model made, how many were correct.
+
+High precision means that when the model claims a match, it is very likely to be correct.
+
+Formula:
+
+    Precision= (Number of Correct Matches / Total Number of Matches Made by Model)
+
+
+​
+ 
+3. Recall
+Out of all the possible correct matches that existed, how many did our model find.
+
+Recall (or Sensitivity) measures the model's ability to find all the relevant mappings. High recall means the model is good at not missing players.
+
+Formula:
+
+      Recall = ( Number of Correct Matches / Total Number of Players in Ground Truth)
+
+
+​
+ 
+4. F1-Score
+
+The F1-Score is the harmonic mean of Precision and Recall. It is a useful metric when you want to find an optimal blend of the two, especially if there's an imbalance between the number of positive and negative cases.
+
+Formula:
+
+    F1-Score= 2 × Precision × Recall / (Precision + Recall)
+
+
+---
+
+### Matching Metrices
+
+
+
+* **True Positive (TP)**: The model correctly maps a player from the tacticam view to their corresponding identity in the broadcast view.
+
+      Example: Right id's are (tacticam_5 -> broadcast_10) but the model predicts (tacticam_5 -> broadcast_10).
+
+* **False Positive (FP)**: The model incorrectly maps a player to the wrong identity in the other view.
+
+      Example: Right id's are (tacticam_5 -> broadcast_10) but the  model predicts (tacticam_5 -> broadcast_12).
+
+* **False Negative (FN)**: The model fails to produce a mapping for a player who is present in both views and should have been mapped.
+
+      Example: Let's say, there is a mapping for tacticam_5, but the model produces no mapping for tacticam_5.
 ---
 
 ## Future Work

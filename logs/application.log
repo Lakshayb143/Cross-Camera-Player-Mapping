@@ -2103,3 +2103,11 @@ PHASE 2: Matching players and visualizing results...
 2025-06-27 02:41:16,998 - WARNING - [src.steps.CrossViewMatcher] - One list is empty (either player_view1 or player_view2)
 2025-06-27 02:41:22,010 - WARNING - [src.steps.CrossViewMatcher] - One list is empty (either player_view1 or player_view2)
 2025-06-27 02:41:27,024 - INFO - [__main__] - Execution Completed.
+2025-06-27 14:48:42,576 - INFO - [root] - Logging system configured successfully
+2025-06-27 14:48:42,577 - INFO - [__main__] - 
+
+
+
+
+2025-06-27 14:48:42,577 - INFO - [__main__] - -------------------------Starting application------------------------------------
+2025-06-27 14:48:42,578 - INFO - [__main__] - Defining Homography points using points_utils.py' for both videos.
