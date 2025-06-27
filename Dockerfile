@@ -24,4 +24,4 @@ RUN uv pip install -r requirements.txt --system --no-cache-dir
 # Create a directory for input data. We will mount our local data here.
 # RUN mkdir -p /app/input_data
 
-CMD ["uv", "run", "application.py"]
+CMD ["uv", "--no-venv", "run", "application.py"]

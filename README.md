@@ -1,4 +1,4 @@
-# 📘 Cross-Camera Player Re-Identification Documentation
+# Cross-Camera Player Re-Identification Documentation
 
 ## 📌 Title
 **Cross-Camera Player Tracking and Re-Identification in Football Matches**
@@ -9,21 +9,47 @@
 
 ## 🧭 Table of Contents
 1. [Introduction](#introduction)
-2. [Project Structure](#project-structure)
-3. [Input Description](#input-description)
-4. [System Architecture](#system-architecture)
-5. [Modules and Components](#modules-and-components)
-6. [Design Decisions](#design-decisions)
-7. [Implementation Steps](#implementation-steps)
-8. [Challenges](#challenges)
-9. [Evaluation and Metrics](#evaluation-and-metrics)
-  10. [Future Work](#future-work)
-  11. [References](#references)
+2. [Run the Project](#steps-to-run)
+3. [Project Structure](#project-structure)
+4. [Input Description](#input-description)
+5. [System Architecture](#system-architecture)
+6. [Modules and Components](#modules-and-components)
+7. [Design Decisions](#design-decisions)
+8. [Implementation Steps](#implementation-steps)
+9. [Challenges](#challenges)
+10. [Evaluation and Metrics](#evaluation-and-metrics)
+  11. [Future Work](#future-work)
+  12. [References](#references)
 
 ---
 
 ## Introduction
 This project aims to build a system for tracking and re-identifying football players across two camera angles. It leverages a YOLO-based object detection model along with tracking and appearance-based matching strategies to maintain consistent identities across views.
+
+---
+
+## Steps to Run
+
+You can run the Cross-Camera-Player-Mapping project directly on your local machine using uv, a fast Python packaging and task runner.
+
+✅ Prerequisites
+- Python 3.11+
+- uv installed globally:
+```bash
+pip install uv
+```
+
+```bash
+git clone https://github.com/Lakshayb143/Cross-Camera-Player-Mapping
+cd Cross-Camera-Player-Mapping
+
+uv venv
+source .venv/bin/activate  # On Windows: .venv\Scripts\activate
+
+uv pip install -r requirements.txt
+
+uv run application.py # running the main pipeline
+```
 
 ---
 
