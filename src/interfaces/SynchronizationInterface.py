@@ -1,6 +1,6 @@
 from abc import ABC, abstractmethod
 from typing import Tuple
-from core.steps.FrameExtractor import FrameExtractor
+from src.steps.FrameExtractor import FrameExtractor
 
 
 """

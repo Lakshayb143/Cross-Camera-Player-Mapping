@@ -21,9 +21,4 @@ class ModelInterface(ABC):
         """
         pass
 
-    @abstractmethod
-    def detect(self , frame : np.ndarray) -> List[Dict]:
-        """
-        It will used to call detect function.
-        """
-        pass
+    

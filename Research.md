@@ -53,6 +53,8 @@
     - [Repo 1](https://github.com/ML-KULeuven/)
     - [Repo 2](https://github.com/Friends-of-Tracking-Data-FoTD)
 
+- **Torch Reid** -Torchreid is a library for deep-learning person re-identification, written in PyTorch [webiste](https://github.com/KaiyangZhou/deep-person-reid)
+    
 
 
 ---
@@ -136,6 +138,147 @@ Sometimes, the best solution is to let a human do it.
 | **Feature-Based (OCR)** | Reads a game clock in both views and aligns based on the time. | Potentially the most accurate, uses ground truth time. | Complex to implement, requires reliable detection and OCR. | Professional broadcasts with a consistent on-screen clock. |
 | **Manual Interface** | A human user visually aligns the videos and sets the offset. | Perfect accuracy (human-validated), great fallback. | Not automated, does not scale. | Final validation, or when all automated methods fail. |
 
+
+---
+---
+
+### 🧠 What Is Homography — In Simple Terms?
+
+Homography is a **mathematical transformation** that maps points from one plane to another. Think of it as a way to "warp" the view from one camera so it looks like it's from another angle.
+
+
+
+* **Broadcast video**: side-view of football match.
+* **Tacticam video**: top-down (or elevated) view of same match.
+
+You use homography to **project both views onto a common 2D plane**, usually the football field. Once aligned, players in both videos can be spatially compared or even matched based on their position on the field.
+
+---
+
+### 🏁 Why Do You Need It?
+
+For **player re-identification**:
+
+* Tracking ID `42` in broadcast and ID `17` in tacticam: you want to know they are the same person.
+* If both views are aligned (via homography), comparing player **positions, motion, or appearance** becomes easier.
+* Homography is the bridge to align different camera angles.
+
+---
+
+### ✅ What Points Should You Mark?
+
+You must select **corresponding points** in both videos. These should be **fixed field features** that are visible in both views.
+
+#### Good examples:
+
+| Real-world feature         | Why it's good                  |
+| -------------------------- | ------------------------------ |
+| 4 corners of penalty box   | Well-defined & always present  |
+| Corners of center circle   | Symmetric & fixed              |
+| Sideline–goal intersection | Sharp corners, visible in both |
+
+* ⚠️ Do **not** click on players! They move — not reliable.
+* Choose **lines** or **points** that are:
+
+  * Flat (on the ground),
+  * Clearly visible in both videos,
+  * Far enough apart (not too close).
+
+
+
+---
+
+### 👨‍🔬 How This Helps Player Re-ID
+
+* Instead of matching by just visual appearance (which is hard across angles), you can now:
+
+  * Match by position.
+  * Combine appearance + spatial location + motion.
+
+This is called **cross-view player tracking** and is a common technique in multi-camera sports analytics.
+
+---
+
+
+
+## 🎯 So, What Are Destination Points?
+
+Think of destination points as the **reference view** or the **"ideal" layout** you're mapping to. The choice depends on:
+
+### 🎥 Your Two Video Types
+
+* **Broadcast video**: perspective from the side, often at an angle.
+* **Tacticam**: top-down or tactical overhead view (more like a 2D map of the field).
+
+### 👇 Practical Choices for Destination Points:
+
+#### ✅ Option 1: Select Corresponding Points from Tacticam Video
+
+* Pause a frame from the **tacticam video**.
+* Select the **same 4 logical points** (e.g., corners of penalty box, center circle, field corners).
+* Use these as `dst_pts`.
+
+That gives you:
+
+```python
+H, status = cv2.findHomography(src_pts_broadcast, dst_pts_tacticam)
+```
+
+Then you can align broadcast frames to match the tacticam's view using:
+
+```python
+warped = cv2.warpPerspective(broadcast_frame, H, (width, height))
+```
+
+---
+
+#### ✅ Option 2: Map to a Predefined Field Layout
+
+If tacticam is not usable or noisy, you can:
+
+* Use a **fixed top-down layout** of the soccer field (e.g., 105x68 meters).
+* Define destination points manually as pixel locations in a synthetic image.
+
+Example:
+
+```python
+# Map top-left, top-right, bottom-right, bottom-left of field
+dst_pts = np.float32([
+    [0, 0],           # top-left
+    [600, 0],         # top-right
+    [600, 400],       # bottom-right
+    [0, 400]          # bottom-left
+])
+```
+
+---
+
+## 📸 Visualization Tip
+
+To verify if your homography is good:
+
+```python
+# Draw points on original frame
+for pt in src_pts:
+    cv2.circle(frame, tuple(pt), 5, (0, 255, 0), -1)
+
+# Warp frame using H
+warped = cv2.warpPerspective(frame, H, (600, 400))
+
+# Display both
+cv2.imshow("Original", frame)
+cv2.imshow("Warped", warped)
+```
+
+---
+
+## ✅ Summary
+
+| What?                      | How to Choose Destination Points                                     |
+| -------------------------- | -------------------------------------------------------------------- |
+| Matching Tacticam          | Click same logical points from that view                             |
+| Mapping to 2D Field Layout | Use fixed pixel coordinates for field corners                        |
+| Synthetic Layout           | Good if you want a bird’s eye transformation for all broadcast clips |
 
 
 

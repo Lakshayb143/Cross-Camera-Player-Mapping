@@ -2,9 +2,9 @@ import logging
 from typing import Iterator, Tuple, Type
 import numpy as np
 
-from core.interfaces.SynchronizationInterface import SynchronizationStrategy
-from core.components.SynchronizationStrategies import CrossCorrelationSynchronizationStrategy
-from core.steps.FrameExtractor import FrameExtractor
+from src.interfaces.SynchronizationInterface import SynchronizationStrategy
+from src.components.SynchronizationStrategies import CrossCorrelationSynchronizationStrategy
+from src.steps.FrameExtractor import FrameExtractor
 
 logger = logging.getLogger(__name__)
 

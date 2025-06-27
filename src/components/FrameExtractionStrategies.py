@@ -4,7 +4,7 @@ import numpy as np
 from pathlib import Path
 import logging
 
-from core.interfaces.FrameExtractorInterface import FrameExtractingStrategy
+from src.interfaces.FrameExtractorInterface import FrameExtractingStrategy
 
 logger = logging.getLogger(__name__)
 

@@ -4,8 +4,8 @@ import numpy as np
 from skimage.metrics import structural_similarity
 import cv2
 
-from core.interfaces.SynchronizationInterface import SynchronizationStrategy
-from core.steps.FrameExtractor import FrameExtractor
+from src.interfaces.SynchronizationInterface import SynchronizationStrategy
+from src.steps.FrameExtractor import FrameExtractor
 
 logger = logging.getLogger(__name__)
 
@@ -18,7 +18,7 @@ class CrossCorrelationSynchronizationStrategy(SynchronizationStrategy):
     Find the offset by calculating the Structural Similarity Index between frame sequences.
     """
 
-    def __init__(self, sample_duration_sec :int = 5, search_window_sec : int = 0.5 , fps :int = 15):
+    def __init__(self, sample_duration_sec :int = 2, search_window_sec : int = 5 , fps :int = 10):
         self.sample_duration_sec = sample_duration_sec
         self.search_window_sec = search_window_sec
         self.fps = fps

@@ -4,8 +4,8 @@ import numpy as np
 from typing import Iterator,Type
 
 
-from core.components.FrameExtractionStrategies import FfmpegcvCPUStrategy
-from core.interfaces.FrameExtractorInterface import FrameExtractingStrategy
+from src.components.FrameExtractionStrategies import FfmpegcvCPUStrategy
+from src.interfaces.FrameExtractorInterface import FrameExtractingStrategy
 
 logger = logging.getLogger(__name__)
 
