@@ -55,7 +55,7 @@ You can run the Cross-Camera-Player-Mapping project directly on your local machi
 ✅ Prerequisites
 - **Python 3.11+**
 - **uv installed globally**
-- **ffmpeg** must be installed on before running - [Download](https://ffmpeg.org/download.html)
+- **ffmpeg** must be installed before running the project- [Download](https://ffmpeg.org/download.html)
 
 <br>
 
