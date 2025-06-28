@@ -2111,3 +2111,113 @@ PHASE 2: Matching players and visualizing results...
 
 2025-06-27 14:48:42,577 - INFO - [__main__] - -------------------------Starting application------------------------------------
 2025-06-27 14:48:42,578 - INFO - [__main__] - Defining Homography points using points_utils.py' for both videos.
+2025-06-28 20:51:59,599 - INFO - [root] - Logging system configured successfully
+2025-06-28 20:51:59,600 - INFO - [__main__] - 
+
+
+
+
+2025-06-28 20:51:59,600 - INFO - [__main__] - -------------------------Starting application------------------------------------
+2025-06-28 20:51:59,601 - INFO - [__main__] - Defining Homography points using points_utils.py' for both videos.
+2025-06-28 20:52:41,076 - INFO - [root] - Logging system configured successfully
+2025-06-28 20:52:41,077 - INFO - [__main__] - 
+
+
+
+
+2025-06-28 20:52:41,077 - INFO - [__main__] - -------------------------Starting application------------------------------------
+2025-06-28 20:52:41,078 - INFO - [__main__] - Defining Homography points using points_utils.py' for both videos.
+2025-06-28 20:52:41,079 - INFO - [__main__] - Initializing all modules
+2025-06-28 20:52:41,080 - INFO - [src.steps.ViewTransformer] - ------ Calculating homography matrix =----------
+2025-06-28 20:52:41,184 - INFO - [src.steps.ViewTransformer] - Transformer initialized for target resolution (1920, 1080).
+2025-06-28 20:52:41,187 - INFO - [src.steps.ViewTransformer] - Homography calculated using RANSAC. Found 5 inliers out of 24 points.
+2025-06-28 20:52:41,933 - INFO - [src.components.ModelStrategies] - Model loaded successfully with path :artifacts\best.pt & device : cpu with strategy: UltralyticsYoloModel
+2025-06-28 20:52:41,934 - INFO - [src.components.ModelStrategies] - Loading Re-Id Model :osnet_x0_25
+2025-06-28 20:52:42,230 - INFO - [src.components.ModelStrategies] - Re-Id Model loaded successfully with model : osnet_x0_25
+2025-06-28 20:52:42,747 - INFO - [src.components.ModelStrategies] - Model loaded successfully with path :artifacts\best.pt & device : cpu with strategy: UltralyticsYoloModel
+2025-06-28 20:52:42,748 - INFO - [src.steps.FeatureExtractor] - Feature Extractor Initialized succesfully.
+2025-06-28 20:52:42,749 - INFO - [__main__] - ---Initializing Extractors ---
+2025-06-28 20:52:42,749 - INFO - [src.steps.FrameExtractor] - Initializing extractor for artifacts\broadcast.mp4  with primary strategy FfmpegcvCPUStrategy
+2025-06-28 20:52:42,750 - INFO - [src.steps.FrameExtractor] - Initializing extractor for artifacts\tacticam.mp4  with primary strategy FfmpegcvCPUStrategy
+2025-06-28 20:52:42,751 - INFO - [__main__] - --- Running Synchronization  ---
+2025-06-28 20:52:42,751 - INFO - [src.components.SynchronizationStrategies] - Initialized Cross Correlation Synchronization Strategy with sample_duration = 2s , search_window = 5s, comparison_fps = 10
+2025-06-28 20:52:42,752 - INFO - [src.steps.Synchronizer] - Synchronizer initialized with strategy: CrossCorrelationSynchronizationStrategy
+2025-06-28 20:52:42,754 - INFO - [src.steps.CrossViewMatcher] - CrossViewMatcher initialized with weights: {'appearance': 0.3, 'color_hist': 0.2, 'field_coords': 0.4, 'pose': 0.1}
+2025-06-28 20:52:42,754 - INFO - [src.components.FrameExtractionStrategies] - Attempting to open 'artifacts\broadcast.mp4' with CPU.
+2025-06-28 20:52:43,481 - INFO - [src.components.FrameExtractionStrategies] - Video is opened on 'artifacts\broadcast.mp4' with CPU.
+2025-06-28 20:52:43,482 - INFO - [src.steps.FrameExtractor] - Successfully opened video with active strategy: FfmpegcvCPUStrategy
+2025-06-28 20:52:43,482 - INFO - [src.components.FrameExtractionStrategies] - Attempting to open 'artifacts\tacticam.mp4' with CPU.
+2025-06-28 20:52:43,655 - INFO - [src.components.FrameExtractionStrategies] - Video is opened on 'artifacts\tacticam.mp4' with CPU.
+2025-06-28 20:52:43,656 - INFO - [src.steps.FrameExtractor] - Successfully opened video with active strategy: FfmpegcvCPUStrategy
+2025-06-28 20:52:43,657 - INFO - [src.components.SynchronizationStrategies] - Starting visual cross-correlation to find offset.
+2025-06-28 20:52:43,658 - INFO - [src.components.SynchronizationStrategies] - Extracting 2s sample from first video.
+2025-06-28 20:52:43,658 - INFO - [src.steps.FrameExtractor] - Starting frame extraction at 10 FPS.
+2025-06-28 20:52:44,890 - INFO - [src.components.SynchronizationStrategies] - Extracting 5s search window from second video.
+2025-06-28 20:52:44,891 - INFO - [src.steps.FrameExtractor] - Starting frame extraction at 10 FPS.
+2025-06-28 20:52:46,729 - INFO - [src.components.SynchronizationStrategies] - Comparing sequences. Max frame offset to check: 30
+2025-06-28 20:52:49,947 - INFO - [src.components.SynchronizationStrategies] - Synchronization complete. Best match found at frame offset: 0 & with confidence: 0.4166 
+2025-06-28 20:52:49,950 - INFO - [src.steps.FrameExtractor] - Closing Video source
+2025-06-28 20:52:50,148 - INFO - [src.steps.FrameExtractor] - Closing Video source
+2025-06-28 20:52:50,390 - INFO - [__main__] - Calculated Offset: 0 frames, Confidence: 0.4166 
+2025-06-28 20:52:50,391 - INFO - [__main__] - --- PHASE 1 : Extracting data from all frames ---
+2025-06-28 20:52:50,392 - WARNING - [src.steps.Synchronizer] - Sync confidence is low (0.42). 
+2025-06-28 20:52:50,392 - INFO - [src.steps.Synchronizer] - Starting synchronized frame stream at 10 FPS, with frame offset 0.
+2025-06-28 20:52:50,393 - INFO - [src.components.FrameExtractionStrategies] - Attempting to open 'artifacts\broadcast.mp4' with CPU.
+2025-06-28 20:52:50,537 - INFO - [src.components.FrameExtractionStrategies] - Video is opened on 'artifacts\broadcast.mp4' with CPU.
+2025-06-28 20:52:50,538 - INFO - [src.steps.FrameExtractor] - Successfully opened video with active strategy: FfmpegcvCPUStrategy
+2025-06-28 20:52:50,539 - INFO - [src.components.FrameExtractionStrategies] - Attempting to open 'artifacts\tacticam.mp4' with CPU.
+2025-06-28 20:52:50,672 - INFO - [src.components.FrameExtractionStrategies] - Video is opened on 'artifacts\tacticam.mp4' with CPU.
+2025-06-28 20:52:50,673 - INFO - [src.steps.FrameExtractor] - Successfully opened video with active strategy: FfmpegcvCPUStrategy
+2025-06-28 20:52:50,674 - INFO - [src.steps.FrameExtractor] - Starting frame extraction at 10 FPS.
+2025-06-28 20:52:50,883 - INFO - [src.steps.FrameExtractor] - Starting frame extraction at 10 FPS.
+2025-06-28 22:22:02,135 - INFO - [root] - Logging system configured successfully
+2025-06-28 22:22:02,136 - INFO - [__main__] - 
+
+
+
+
+2025-06-28 22:22:02,136 - INFO - [__main__] - -------------------------Starting application------------------------------------
+2025-06-28 22:22:02,137 - INFO - [__main__] - Defining Homography points using points_utils.py' for both videos.
+2025-06-28 22:22:02,137 - INFO - [__main__] - Initializing all modules
+2025-06-28 22:22:02,137 - INFO - [src.steps.ViewTransformer] - ------ Calculating homography matrix =----------
+2025-06-28 22:22:02,184 - INFO - [src.steps.ViewTransformer] - Transformer initialized for target resolution (1920, 1080).
+2025-06-28 22:22:02,185 - INFO - [src.steps.ViewTransformer] - Homography calculated using RANSAC. Found 5 inliers out of 24 points.
+2025-06-28 22:22:02,565 - INFO - [src.components.ModelStrategies] - Model loaded successfully with path :artifacts\best.pt & device : cpu with strategy: UltralyticsYoloModel
+2025-06-28 22:22:02,565 - INFO - [src.components.ModelStrategies] - Loading Re-Id Model :osnet_x0_25
+2025-06-28 22:22:02,691 - INFO - [src.components.ModelStrategies] - Re-Id Model loaded successfully with model : osnet_x0_25
+2025-06-28 22:22:02,901 - INFO - [src.components.ModelStrategies] - Model loaded successfully with path :artifacts\best.pt & device : cpu with strategy: UltralyticsYoloModel
+2025-06-28 22:22:02,902 - INFO - [src.steps.FeatureExtractor] - Feature Extractor Initialized succesfully.
+2025-06-28 22:22:02,902 - INFO - [__main__] - ---Initializing Extractors ---
+2025-06-28 22:22:02,903 - INFO - [src.steps.FrameExtractor] - Initializing extractor for artifacts\broadcast.mp4  with primary strategy FfmpegcvCPUStrategy
+2025-06-28 22:22:02,903 - INFO - [src.steps.FrameExtractor] - Initializing extractor for artifacts\tacticam.mp4  with primary strategy FfmpegcvCPUStrategy
+2025-06-28 22:22:02,904 - INFO - [__main__] - --- Running Synchronization  ---
+2025-06-28 22:22:02,904 - INFO - [src.components.SynchronizationStrategies] - Initialized Cross Correlation Synchronization Strategy with sample_duration = 2s , search_window = 5s, comparison_fps = 10
+2025-06-28 22:22:02,904 - INFO - [src.steps.Synchronizer] - Synchronizer initialized with strategy: CrossCorrelationSynchronizationStrategy
+2025-06-28 22:22:02,905 - INFO - [src.steps.CrossViewMatcher] - CrossViewMatcher initialized with weights: {'appearance': 0.3, 'color_hist': 0.2, 'field_coords': 0.4, 'pose': 0.1}
+2025-06-28 22:22:02,905 - INFO - [src.components.FrameExtractionStrategies] - Attempting to open 'artifacts\broadcast.mp4' with CPU.
+2025-06-28 22:22:03,127 - INFO - [src.components.FrameExtractionStrategies] - Video is opened on 'artifacts\broadcast.mp4' with CPU.
+2025-06-28 22:22:03,127 - INFO - [src.steps.FrameExtractor] - Successfully opened video with active strategy: FfmpegcvCPUStrategy
+2025-06-28 22:22:03,127 - INFO - [src.components.FrameExtractionStrategies] - Attempting to open 'artifacts\tacticam.mp4' with CPU.
+2025-06-28 22:22:03,205 - INFO - [src.components.FrameExtractionStrategies] - Video is opened on 'artifacts\tacticam.mp4' with CPU.
+2025-06-28 22:22:03,206 - INFO - [src.steps.FrameExtractor] - Successfully opened video with active strategy: FfmpegcvCPUStrategy
+2025-06-28 22:22:03,206 - INFO - [src.components.SynchronizationStrategies] - Starting visual cross-correlation to find offset.
+2025-06-28 22:22:03,206 - INFO - [src.components.SynchronizationStrategies] - Extracting 2s sample from first video.
+2025-06-28 22:22:03,207 - INFO - [src.steps.FrameExtractor] - Starting frame extraction at 10 FPS.
+2025-06-28 22:22:03,805 - INFO - [src.components.SynchronizationStrategies] - Extracting 5s search window from second video.
+2025-06-28 22:22:03,805 - INFO - [src.steps.FrameExtractor] - Starting frame extraction at 10 FPS.
+2025-06-28 22:22:04,802 - INFO - [src.components.SynchronizationStrategies] - Comparing sequences. Max frame offset to check: 30
+2025-06-28 22:22:06,439 - INFO - [src.components.SynchronizationStrategies] - Synchronization complete. Best match found at frame offset: 0 & with confidence: 0.4166 
+2025-06-28 22:22:06,440 - INFO - [src.steps.FrameExtractor] - Closing Video source
+2025-06-28 22:22:06,586 - INFO - [src.steps.FrameExtractor] - Closing Video source
+2025-06-28 22:22:06,757 - INFO - [__main__] - Calculated Offset: 0 frames, Confidence: 0.4166 
+2025-06-28 22:22:06,757 - INFO - [__main__] - --- PHASE 1 : Extracting data from all frames ---
+2025-06-28 22:22:06,758 - WARNING - [src.steps.Synchronizer] - Sync confidence is low (0.42). 
+2025-06-28 22:22:06,758 - INFO - [src.steps.Synchronizer] - Starting synchronized frame stream at 10 FPS, with frame offset 0.
+2025-06-28 22:22:06,758 - INFO - [src.components.FrameExtractionStrategies] - Attempting to open 'artifacts\broadcast.mp4' with CPU.
+2025-06-28 22:22:06,816 - INFO - [src.components.FrameExtractionStrategies] - Video is opened on 'artifacts\broadcast.mp4' with CPU.
+2025-06-28 22:22:06,816 - INFO - [src.steps.FrameExtractor] - Successfully opened video with active strategy: FfmpegcvCPUStrategy
+2025-06-28 22:22:06,817 - INFO - [src.components.FrameExtractionStrategies] - Attempting to open 'artifacts\tacticam.mp4' with CPU.
+2025-06-28 22:22:06,874 - INFO - [src.components.FrameExtractionStrategies] - Video is opened on 'artifacts\tacticam.mp4' with CPU.
+2025-06-28 22:22:06,875 - INFO - [src.steps.FrameExtractor] - Successfully opened video with active strategy: FfmpegcvCPUStrategy
+2025-06-28 22:22:06,875 - INFO - [src.steps.FrameExtractor] - Starting frame extraction at 10 FPS.
+2025-06-28 22:22:06,994 - INFO - [src.steps.FrameExtractor] - Starting frame extraction at 10 FPS.

@@ -121,10 +121,11 @@ Cross-Camera-Player-Mapping/
 ---
 
 ## Design Decisions
-- Implmented various LLD (Low Level Design) techniques to make code simple, clean, modular and scalable.
-- Chose YOLO for detection due to pretrained model availability.
+- Implmented various `LLD (Low Level Design)` techniques to make code simple, clean, modular and scalable.
+- Chose `YOLO` for detection due to pretrained model availability.
 - Torchreid model - `osnet_x0_25` selected for real-time, ID-preserving tracking.
-- Re-ID through combination of bounding box crops and color histograms.
+- Re-ID through `features` generated using combination of appearance embedding, player coordinates, bounding box crops and color histograms.
+- Implmented Global `ID Manager` for managing and tracking id across multiple camera's.
 - Used `Docker` for contanerization of the application.
 
 ---
@@ -134,6 +135,7 @@ Cross-Camera-Player-Mapping/
 - Frame sampling every X frames using `ffmpegcv`
 - Video synchronization
 - Normalizaton and transformation using homography with `cv2.RANSAC`
+- Used field image shown in figure 1 for a common ground for both images for homography and warp persective.
 
 ### ✅ Step 2: Detection and Tracking
 - Detection and tracking of players on each frame with YOLO `.pt` model
@@ -146,6 +148,12 @@ Cross-Camera-Player-Mapping/
 
 ### ✅ Step 4: Cross-Camera Matching
 - Used feature based cost matrix and `scipy.optimize.linear_sum_assignment` for optimization.
+
+![Field Picture](field.jpg)
+
+
+
+Figure 1: Field Picture
 
 
 ---
