@@ -146,6 +146,8 @@ def main():
         logger.info("--- PHASE 1: Data extraction Completed.")
 
         logger.info("\n\nPHASE 2: Matching players and visualizing results...")
+        result_saver = cv2.VideoWriter_fourcc(*'mp4v')
+        result_video = cv2.VideoWriter(str(settings.OUTPUT_PATH), result_saver, 10, (field_map.shape[1], field_map.shape[0]))
         for i in range(frame_index):
             frame_data = all_player_data_by_frame[i]
             players_1 = [p for p in frame_data if p["view"] == "broadcast"]
@@ -155,6 +157,7 @@ def main():
 
             vis_frame = draw_unified_view(matched, unmatched1, unmatched2, id_manager, field_map)
             cv2.imshow("Unified Top-Down View", vis_frame)
+            result_video.write(vis_frame)
             if cv2.waitKey(1000) & 0xFF == ord('q'): 
                 break
             
@@ -163,6 +166,8 @@ def main():
         logger.error(f"An error occurred during synchronized streaming: {e}")
         logger.error(traceback.format_exc())
     finally:
+        result_video.release()
+        logger.info(f"Unified visualization saved to: {settings.OUTPUT_PATH}")
         cv2.destroyAllWindows()    
 
 

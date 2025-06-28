@@ -30,7 +30,7 @@ class GlobalIdentityManager:
             new_id = self.next_global_id
             self.id_map[(view_name, track_id)] = new_id
             self.reverse_map[new_id] = [(view_name, track_id)]
-            self.get_global_id += 1
+            self.next_global_id += 1
             return new_id
         
 

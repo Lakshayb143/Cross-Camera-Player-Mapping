@@ -17,6 +17,7 @@ class Settings(BaseSettings):
     BROADCAST_VIDEO_PATH :Path = Path("artifacts/broadcast.mp4")
     TACTICAM_VIDEO_PATH :Path = Path("artifacts/tacticam.mp4")
     FIELD_IMAGE : Path = Path("artifacts/soccer-green-field.jpg")
+    OUTPUT_PATH : Path = Path("artifacts/unified_output.mp4")
 
 
     """Model Configuration"""
